@@ -1,0 +1,16 @@
+/////////////Este txt possui as regras de negócio do programa de sistema bancário.
+
+
+1 - Corrente -> ganha R$50 ; A mensalidade será de R$12
+2 - Poupança -> ganha R$150 ; A mensalidade será de R$20
+
+-> Para fechar uma conta, não pode ter saldo em aberto na mesma. Tem que sacar todo dinheiro para depois fechar a conta.
+
+-> Para depositar em uma conta o status da mesma tem que estar verdadeiro.
+
+-> Para sacar o status tem que estar verdadeiro e tem que ter o saldo disponível.
+
+-> Metodo construtor:
+
+1. Define a conta como fechada.
+2. Define o saldo = 0.
