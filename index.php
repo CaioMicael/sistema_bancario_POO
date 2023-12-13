@@ -11,11 +11,12 @@
         require_once 'classContaBancaria.php';
         $conta1 = new ContaBancaria();
         $conta1 -> setNumConta(101);
-        $conta1 -> setTipoConta(1);
+        $conta1 -> setDono("Teste");
+        $conta1 -> setTipoConta(2);
         $conta1 -> abrirConta();
         $conta1 -> pagarMensal();
-        //$conta1 -> depositar();
-        //$conta1 -> sacar();
+        //$conta1 -> depositar(10);
+        //$conta1 -> sacar(130);
         //$conta1 -> fecharConta();
     ?>
 

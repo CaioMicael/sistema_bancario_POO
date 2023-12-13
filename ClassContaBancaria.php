@@ -7,34 +7,35 @@ class ContaBancaria {
     private $status = true || false;
 
     function __construct() { //Método Construtor
-        $this -> status = false;
-        $this -> saldo = 0;
+        $this -> setStatus(false);
+        $this -> setSaldo(0);
     }
 
     function abrirConta() {
-        if ($this -> status == false) {
+        if ($this -> getStatus() == false) {
             $this -> setStatus(true);
-            if ($this -> tipoConta == 1) {
-                $this -> saldo = 50;
+            if ($this -> getTipoConta() == 1) {
+                $this -> setSaldo(50);
                 echo "Sua conta do tipo {$this -> getTipoConta()} foi aberta e você ganhou 50 reais!<br>";
-            } else if ($this -> tipoConta == 2) {
-                $this -> saldo = 150;
+            } else if ($this -> getTipoConta() == 2) {
+                $this -> setSaldo(150);
                 echo "Sua conta do tipo {$this -> getTipoConta()} foi aberta e você ganhou 150 reais!<br>";
             }
         }
     }
 
     function fecharConta() {
-        if ($this -> saldo == 0) {
+        if ($this -> getSaldo() == 0) {
             $this -> setStatus(false);
+            echo "A conta de número {$this -> getNumConta()} foi desativada.<br>";
         } else {
             echo "A conta possui saldo de {$this -> getSaldo()}, só é possível fechar conta com saldo zerado.<br>";
         }
     }
 
     function depositar($valorDepositado) {
-        if (($this -> status = true) && ($valorDepositado > 0)) {
-            $this -> saldo = $this -> saldo + $valorDepositado;
+        if (($this -> getStatus() == true) && ($valorDepositado > 0)) {
+            $this -> setSaldo($this -> getSaldo() + $valorDepositado);
             echo "Depositado o valor de $valorDepositado.  Saldo pós movimentação = {$this -> getSaldo()}<br>";
         } else {
             echo "A conta esta desativada ou o valor a depositar é menor que zero.<br>";
@@ -42,8 +43,8 @@ class ContaBancaria {
     }
 
     function sacar($ValorSacar) {
-        if (($this -> status == true) && ($this -> saldo >= $ValorSacar) && ($ValorSacar > 0)) {
-            $this -> saldo = $this -> saldo - $ValorSacar;
+        if (($this -> getStatus() == true) && ($this -> saldo >= $ValorSacar) && ($ValorSacar > 0)) {
+            $this -> setSaldo($this -> getSaldo() - $ValorSacar);
             echo "Valor de $ValorSacar sacado com sucesso.  Saldo pós movimentação = {$this -> getSaldo()}<br>";
         } else {
             echo "A conta está desativada ou não possui saldo ou o valor a sacar é inválido, sendo seu saldo de {$this -> getSaldo()} e o valor desejado a sacar de $ValorSacar.<br>";
@@ -51,11 +52,11 @@ class ContaBancaria {
     }
 
     function pagarMensal() {
-        if ($this -> tipoConta == 1) {
-            $this -> saldo = $this -> saldo - 12;
+        if ($this -> getTipoConta() == 1) {
+            $this -> setSaldo($this -> getSaldo() - 12);
             echo "Pago mensalidade de 12 reais. Saldo pós movimentação = {$this -> getSaldo()}<br>";
-        } else if ($this -> tipoConta == 2) {
-            $this -> saldo = $this -> saldo - 20;
+        } else if ($this -> getTipoConta() == 2) {
+            $this -> setSaldo($this -> getSaldo() - 20);
             echo "Pago mensalidade de 20 reais. Saldo pós movimentação = {$this -> getSaldo()}<br>";
         }
     }
